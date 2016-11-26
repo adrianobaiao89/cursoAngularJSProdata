@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('pdAppArquiterura').directive('pdHelloWorld',pdHelloWorld);
+    angular.module('pdAppArquitetura').directive('pdHelloWorld',pdHelloWorld);
     function pdHelloWorld() {
         return{
             restrict:'E',

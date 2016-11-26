@@ -27,17 +27,40 @@
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
 
     <script src="app/config/pd-app.js"></script>
-    <script src="app/config/pd-rotas-bairro.config.js"></script>
-    <script src="app/controller/index.controller.js"></script>
+
+    <script src="arquitetura/directivas/pd-hello-world/pd-hello-world.directive.js"></script>
+    <script src="arquitetura/directivas/pd-input-text/pd-input-text.directive.js"></script>
+    <script src="arquitetura/directivas/pd-crud/pd-crud.directive.js"></script>
+
+    <script src="app/config/pd-rotas.config.js"></script>
+    <script src="app/controller/index10-directiva-crud.controller.js"></script>
 
     <script src="app/service/alert.service.js"></script>
     <script src="app/filter/maiusculo.filter.js"></script>
-    <script src="arquitetura/directivas/pd-hello-world/pd-hello-world.directive.js"></script>
-    <script src="arquitetura/directivas/pd-input-text/pd-input-text.directive.js"></script>
 </head>
-<body ng-app="pdApp" class="container" ng-controller="IndexController as vm">
-    <pd-hello-world></pd-hello-world>
-    <pd-input-text label="nome" placeholder="nome" ng-model="vm.entidade.nome"> </pd-input-text>
+<body ng-app="pdApp"
+      class="container"
+      ng-controller="CadastroCarroController as vm">
+
+
+<pd-crud titulo="Cadastro de carro"
+         salvar="vm.salvar()"
+         excluir="vm.excluir()"
+         limpar="vm.limpar()">
+    <div class="row">
+        <pd-input-text label="Nome"
+                       placeholder="Nome do carro"
+                       ng-model="vm.entidade.nome"
+                       colspan="3">
+        </pd-input-text>
+
+        <pd-input-text label="Marca"
+                       placeholder="Marca do carro"
+                       ng-model="vm.entidade.marca"
+                       colspan="3">
+        </pd-input-text>
+    </div>
+</pd-crud>
 
 </body>
 </html>

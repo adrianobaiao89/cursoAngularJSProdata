@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- CSS LINK -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
@@ -25,19 +24,27 @@
     <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="node_modules/angular-local-storage/src/angular-local-storage.js"></script>
 
     <script src="app/config/pd-app.js"></script>
-    <script src="app/config/pd-rotas-bairro.config.js"></script>
-    <script src="app/controller/index.controller.js"></script>
+
+    <script src="arquitetura/directivas/pd-hello-world/pd-hello-world.directive.js"></script>
+    <script src="arquitetura/directivas/pd-input-text/pd-input-text.directive.js"></script>
+    <script src="arquitetura/directivas/pd-crud/pd-crud.directive.js"></script>
+    <script src="arquitetura/directivas/pd-panel/pd-panel.directive.js"></script>
+    <script src="arquitetura/directivas/pd-select/pd-select.directive.js"></script>
+
+    <script src="app/config/pd-rotas.config.js"></script>
+    <script src="app/controller/index11-storage.controller.js"></script>
 
     <script src="app/service/alert.service.js"></script>
     <script src="app/filter/maiusculo.filter.js"></script>
-    <script src="arquitetura/directivas/pd-hello-world/pd-hello-world.directive.js"></script>
-    <script src="arquitetura/directivas/pd-input-text/pd-input-text.directive.js"></script>
 </head>
-<body ng-app="pdApp" class="container" ng-controller="IndexController as vm">
-    <pd-hello-world></pd-hello-world>
-    <pd-input-text label="nome" placeholder="nome" ng-model="vm.entidade.nome"> </pd-input-text>
+<body ng-app="pdApp"
+      class="container"
+      ng-controller="IndexController as vm">
+{{vm.lista}}
+<button ng-click="vm.setarInformacoesNoStorage()">Enviar</button>
 
 </body>
 </html>
