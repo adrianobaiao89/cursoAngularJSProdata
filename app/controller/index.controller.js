@@ -7,4 +7,10 @@ function IndexController($scope) {
         alert('Ola');
     }
 
+    $scope.$on('testeEnvioEvento', onTesteEnvioEvento);
+    function onTesteEnvioEvento(event, data) {
+        var teste = data;
+        console.log('Nome:', event.currentScope.nome)
+    }
+
 }

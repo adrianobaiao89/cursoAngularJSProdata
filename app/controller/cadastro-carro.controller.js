@@ -1,13 +1,37 @@
 angular.module('pdApp')
     .controller('CadastroCarroController', CadastroCarroController);
-function CadastroCarroController($scope, AlertService) {
+CadastroCarroController.$inject = ['$scope', 'AlertService', '$filter'];
+function CadastroCarroController($scope, AlertService, $filter) {
+    var index = 0;
     $scope.entidade = {};
-    $scope.listaCarros = [];
+
     $scope.salvar = salvar;
     $scope.limpar = limpar;
+    $scope.excluir = excluir;
+
+    iniciar();
+
+    function iniciar(){
+        if(!$rootScope.listaBairros){
+            $rootScope.listaBairros = [];
+        }
+        $scope.listaBairros = $rootScope.listaBairros;
+    }
+    $scope.gridOptions = {
+        columnDefs: [
+            {name: 'Nome', field: 'nomeCarro'},
+            {name: 'Fabricante', field: 'fabricanteCarro'},
+            {name: 'Cor do Carro', field: 'corCarro'},
+            {name: 'Dt Lancamento', field: 'dataLancamento', cellTemplate: 'app/template/grid/cell-template-date.html'},
+            {name: '', field: 'excluir', cellTemplate: 'app/template/grid/cell-template-excluir.html', width: 40}
+        ],
+        data: 'listaCarros',
+        enableColumnMenus: false
+    };
+
     function salvar() {
 
-        if($scope.carroForm.$invalid){
+        if ($scope.carroForm.$invalid) {
             $scope.carroForm.nomeCarro.$setTouched();
             $scope.carroForm.fabricanteCarro.$setTouched();
             $scope.carroForm.corCarro.$setTouched();
@@ -21,10 +45,16 @@ function CadastroCarroController($scope, AlertService) {
         limpar();
 
     }
+
     function limpar() {
-        $scope.entidade ={};
+        $scope.entidade = {};
         $scope.carroForm.$setUntouched();
         $scope.carroForm.$setPristine();
         angular.element('#nomeCarro').focus();
+    }
+
+    function excluir(index) {
+        $scope.listaCarros.splice(index, 1);
+
     }
 }

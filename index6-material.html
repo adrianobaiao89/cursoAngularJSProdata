@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="app/css/style.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+
+    <!-- JS LINK -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/cadastro-carro.controller.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+
+    <script src="app/service/alert.service.js"></script>
+    <script src="app/filter/maiusculo.filter.js"></script>
+
+
+</head>
+<body ng-app="pdApp">
+<div ng-controller="CadastroCarroController" class="container">
+    <form name="carroForm" novalidate>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa-2x fa fa-edit"></i> Cadastro de Carro
+            </div>
+            <div class="panel panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':carroForm.nomeCarro.$touched && carroForm.nomeCarro.$invalid}">
+                            <md-input-container>
+                                <label >Modelo</label>
+                                <input type="text" ng-model="entidade.nomeCarro"
+                                       ng-required="true"
+                                       ng-minlength="3"
+                                       ng-maxlength="20"
+                                       autofocus="true"
+                                       id="nomeCarro"
+                                       name="nomeCarro">
+
+
+                                <div ng-messages="carroForm.nomeCarro.$error"
+                                     ng-if="carroForm.nomeCarro.$touched"
+                                     class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':carroForm.fabricanteCarro.$touched && carroForm.fabricanteCarro.$invalid}">
+                            <md-input-container>
+                                <label >Fabricante</label>
+                                <input type="text" ng-model="entidade.fabricanteCarro"
+                                       ng-required="true"
+                                       ng-minlength="1"
+                                       ng-maxlength="20"
+                                       name="fabricanteCarro">
+
+                                <div ng-messages="carroForm.fabricanteCarro.$error"
+                                     ng-if="carroForm.fabricanteCarro.$touched" class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':carroForm.corCarro.$touched && carroForm.corCarro.$invalid}">
+                            <md-input-container>
+                                <label >Cor</label>
+                                <input type="text"  ng-model="entidade.corCarro"
+                                       ng-required="true"
+                                       ng-minlength="1"
+                                       ng-maxlength="20"
+                                       name="corCarro">
+
+                                <div ng-messages="carroForm.corCarro.$error" ng-if="carroForm.corCarro.$touched"
+                                     class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':carroForm.dataLancamento.$touched && carroForm.dataLancamento.$invalid}">
+                            <md-input-container>
+                                <label>Data de Lançamento</label>
+
+                                <md-datepicker name="dataLancamento" id="dataLancamento" ng-model="entidade.dataLancamento"></md-datepicker>
+
+
+                                <div ng-messages="carroForm.dataLancamento.$error"
+                                     ng-if="carroForm.dataLancamento.$touched"
+                                     class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptions"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary navbar-btn" ng-click="salvar()"><i class="fa fa-save"></i> Salvar
+                </button>
+                <button class="btn btn-warning navbar-btn" ng-click="limpar()"><i class="fa fa-eraser"></i> Limpar
+                </button>
+            </div>
+
+        </div>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<div ng-controller="CadastroBairroController" class="container">
+    <form name="bairroForm" novalidate>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa-2x fa fa-edit"></i> Cadastro de Carro
+            </div>
+            <div class="panel panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error':bairroForm.nomeBairro.$touched && bairroForm.nomeBairro.$invalid}">
+                            <md-input-container>
+                                <label>Nome do Bairro</label>
+                                <input type="text" ng-model="entidade.nomeBairro"
+                                       ng-required="true"
+                                       ng-minlength="3"
+                                       ng-maxlength="20"
+                                       autofocus="true"
+                                       name="nomeBairro"
+                                       autofocus
+                                       id="nomeBairro">
+
+
+                                <div ng-messages="bairroForm.nomeBairro.$error"
+                                     ng-if="bairroForm.nomeBairro.$touched" class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error':bairroForm.nomeCidade.$touched && bairroForm.nomeCidade.$invalid}">
+                            <md-input-container>
+                                <label>Nome da Cidade</label>
+                                <input type="text" ng-model="entidade.nomeCidade"
+                                       ng-required="true"
+                                       ng-minlength="1"
+                                       ng-maxlength="20"
+                                       name="nomeCidade">
+
+                                <div ng-messages="bairroForm.nomeCidade.$error"
+                                     ng-if="bairroForm.nomeCidade.$touched" class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error':bairroForm.nomeEstado.$touched && bairroForm.nomeEstado.$invalid}">
+                            <md-input-container>
+                                <label>Nome do Estado</label>
+                                <input type="text" ng-model="entidade.nomeEstado"
+                                       ng-required="true"
+                                       ng-minlength="1"
+                                       ng-maxlength="20"
+                                       name="nomeEstado">
+
+                                <div ng-messages="bairroForm.nomeEstado.$error" ng-if="bairroForm.nomeEstado.$touched"
+                                     class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptions"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary navbar-btn" ng-click="salvar()"><i class="fa fa-save"></i> Salvar
+                </button>
+                <button class="btn btn-warning navbar-btn" ng-click="limpar()"><i class="fa fa-eraser"></i> Limpar
+                </button>
+            </div>
+
+        </div>
+    </form>
+    <div><!-- corpo-->
+        <ui-view></ui-view>
+    </div>
+
+</div>

@@ -35,7 +35,7 @@
     <form name="carroForm" novalidate>
         <div class="panel panel-primary">
             <div class="panel-heading">
-               <i class="fa-2x fa fa-edit"></i> Cadastro de Carro
+                <i class="fa-2x fa fa-edit"></i> Cadastro de Carro
             </div>
             <div class="panel panel-body">
                 <div class="row">
@@ -51,7 +51,7 @@
                                    name="nomeCarro">
 
                             <div ng-messages="carroForm.nomeCarro.$error"
-                            ng-if="carroForm.nomeCarro.$touched" class="text-danger">
+                                 ng-if="carroForm.nomeCarro.$touched" class="text-danger">
                                 <div ng-messages-include="app/template/input-ng-messages.html"></div>
 
                             </div>
@@ -109,20 +109,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-hover">
-                            <tr>
-                                <th>Modelo</th>
-                                <th>Fabricante</th>
-                                <th>Cor</th>
-                                <th>Data de Lancamento</th>
-                            </tr>
-                            <tr ng-repeat="carro in listaCarros">
-                                <td ng-bind="carro.nomeCarro | maiusculo"></td>
-                                <td ng-bind="carro.fabricanteCarro"></td>
-                                <td ng-bind="carro.corCarro"></td>
-                                <td ng-bind="carro.dataLancamento | date : 'dd/MM/yyyy' "></td>
-                            </tr>
-                        </table>
+                        <div ui-grid="gridOptions"></div>
                     </div>
                 </div>
             </div>

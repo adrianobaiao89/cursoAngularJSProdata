@@ -1,0 +1,65 @@
+<div class="container" ng-controller="VisualizarBairroController" ng-init="onIniciar()">
+    <form name="bairroForm" novalidate>
+
+        <div class="panel panel-info">
+
+            <div class="panel-heading">
+                <i class="fa fa-edit"></i>
+                Visualizar Bairro
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <md-input-container>
+                                <label>Nome do Bairro</label>
+                                <input ng-model="entidade.nomeBairro"
+                                       ng-minlength="3"
+                                       ng-disabled="true"
+                                       ng-maxlength="20"
+                                       name="nomeBairro"
+                                       autofocus
+                                       id="nomeBairro">
+                            </md-input-container>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <md-input-container>
+                                <label>Cidade</label>
+                                <input ng-model="entidade.nomeCidade"
+                                       ng-disabled="true"
+                                       name="nomeCidade">
+                            </md-input-container>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <md-input-container>
+                                <label>Estado</label>
+                                <input ng-model="entidade.nomeEstado"
+                                       ng-disabled="true"
+                                       name="nomeEstado">
+                            </md-input-container>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary navbar-btn" ng-click="voltar()">
+                    <i class="fa fa-arrow-left"></i>
+                    Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
